@@ -4,10 +4,17 @@ const fastify = require('fastify')({
   })
 
   const port = 3000;
-  fastify.use(require('cors')())
+
+  const cors = require('cors');
+
+  fastify.register(cors, { 
+    // make customizations here
+  });
+
+  //fastify.use(require('cors')())
 
   fastify.get('/', async (request, reply) => {
-    return { hello: 'world... Fastify API' }
+    return { HELLO_WORLD: 'Fastify API on Google Cloud Run! woho' }
   })
   
   /**
