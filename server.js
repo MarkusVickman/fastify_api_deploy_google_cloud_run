@@ -2,9 +2,12 @@
 const fastify = require('fastify')({
     logger: true
   })
-  
+
+  const port = 3000;
+  fastify.use(require('cors')())
+
   fastify.get('/', async (request, reply) => {
-    return { hello: 'world' }
+    return { hello: 'world... Fastify API' }
   })
   
   /**
@@ -12,7 +15,7 @@ const fastify = require('fastify')({
    */
   const start = async () => {
     try {
-      await fastify.listen({ port: 3000 })
+      await fastify.listen({ port: port })
     } catch (err) {
       fastify.log.error(err)
       process.exit(1)
